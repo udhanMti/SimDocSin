@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+    <title>Welcome to SimDocSin</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light bg-warning">
+        
+        <a class="navbar-brand" href="{{ url_for('index')}}"><b>SimDocSin</b></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="about"><b>About</b></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="partial_match"><b>Partial Match</b></a>
+            </li>
+            
+            </ul>
+        </div>
+    </nav>
+    <div class="container" s>
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+        {% block content %} {% endblock %}
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+            function openForm(evt, submitType) {
+              // Declare all variables
+                var i, tabcontent, tablinks;
+                
+                // Get all elements with class="tabcontent" and hide them
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                
+                // Get all elements with class="tablinks" and remove the class "active"
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                
+                // Show the current tab, and add an "active" class to the link that opened the tab
+                document.getElementById(submitType).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+
+        
+            
+            
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+          document.getElementById("mybutton").click();
+       });
+    </script>
+
+<script>
+
+    myFunction = function(e) {
+            
+        // prevents default action to happen
+        e.preventDefault();
+        
+        lang = $(".lang:checked").val();
+        lvl = $('input#lvl').val();
+        action = 'Submit Files';
+        console.log(lvl);
+        //var form = $('#request-form')[0];
+
+		// Create an FormData object
+        //var data = new FormData(form);
+        file = $("#myFile")[0].files[0];
+        //console.log(f);
+        var fd = new FormData();
+        fd.append("myFile", file)
+        fd.append("lang",lang)
+        fd.append("lvl",lvl)
+        fd.append("action", action)
+        
+
+        $.ajax({
+        //enctype: "multipart/form-data",
+        type: "POST",
+        url: "/full_match",
+        //contentType: 'application/json;charset=UTF-8',
+        data : fd,//{'lang':lang, 'lvl':lvl, 'action':action},//, 'myFile':f},
+        //enctype: "multipart/form-data",
+        contentType: false,
+        processData: false,
+        beforeSend: function(){
+             $('.results-content').html("<h4>Please wait until your request is processed ....</h4>");
+             $("#action").prop('disabled', true);
+
+        },
+        success: function(response){
+           console.log(response)
+           if(response.results == 'error'){
+                $(".results-content").html('<h4>'+response.error.toString()+'</h4>');
+           }
+           else{
+            //console.log(response.results);
+            //$(".results-content").html('<p>'+response.result.toString()+'</p>');
+                s = getResultString(response);
+
+                $(".results-content").html(s);
+           }
+           $("#action").prop('disabled', false);
+            
+            /* implementation goes here */ 
+        },
+        error: function(jqXHR, textStatus, errorThrown) { 
+            $('.results-content').html("<h4>Error occured... Please recheck and Try again!!</h4>");
+            $("#action").prop('disabled', false);
+        }
+        
+        });
+
+       
+    }
+
+    myFunction_2 = function(e) {
+        
+        // prevents default action to happen
+        e.preventDefault();
+        // do what ever you want to do here
+        // i.e. perform a AJAX call
+        //var formData = 'lang=en';
+        
+        lang = $(".lang_2:checked").val();
+        lvl = $('input#lvl_2').val();
+        action = 'Submit Text';
+        content = $("#content").val();
+        
+
+        var fd = new FormData();
+        fd.append("content", content)
+        fd.append("lang",lang)
+        fd.append("lvl",lvl)
+        fd.append("action", action)
+
+        $.ajax({
+        type: "POST",
+        url: "/full_match",
+        //contentType: 'application/json;charset=UTF-8',
+        data : fd,//{'lang':lang, 'lvl':lvl, 'action':action, 'content':content},
+        //enctype: "multipart/form-data",
+        contentType: false,
+        processData: false,
+        beforeSend: function(){
+             $('.results-content').html("<h4>Please wait until your request is processed ....</h4>");
+             $("#action_2").prop('disabled', true);
+
+        },
+        success: function(response){
+           if(response.results == 'error'){
+                $(".results-content").html('<h4>'+response.error.toString()+'</h4>');
+           }
+           else{
+            s = getResultString(response);
+            $(".results-content").html(s);
+           }
+           $("#action_2").prop('disabled', false);
+        },
+        error: function(jqXHR, textStatus, errorThrown) { 
+            $('.results-content').html("<h4>Error occured... Please recheck and Try again!!</h4>");
+            $("#action_2").prop('disabled', false);
+        },
+        
+        });
+    }
+
+    getResultString = function(response){
+
+        s = '<h4>Results</h4><br>'
+            results = response.results;
+            for(i=0;i<results.length;i++){
+                result = results[i]
+                s+='<span class="label"><b>Source</b></span><br>'
+                s+='<p class="result-source">'+ result.source.toString() +'</p>'
+                s+='<span class="label"><b>Targets</b></span>'
+                targets = result.target
+                for(j=0;j<targets.length;j++){
+                    id = targets[j][0]
+                    target = targets[j][1]
+                    s+='<br><p class="result-target">'+ target.toString() + '</p>'
+                    
+                    if(id>=0){
+                        s+='<p><a href="http://simdocsin.projects.uom.lk/file/' + id.toString() +'.txt" download target="_blank">Download file</a></p>'
+                    }
+                    
+
+                }
+            
+        }
+
+        return s;
+
+    }
+
+    partialFunction = function(e) {
+            
+            e.preventDefault();
+            
+            lang = $(".lang_3:checked").val();
+            lvl = $('input#lvl_3').val();
+            action = 'Submit File';
+            length = $(".min_len:checked").val();
+            
+            file = $("#myFile_2")[0].files[0];
+    
+            var fd = new FormData();
+            fd.append("myFile", file)
+            fd.append("lang",lang)
+            fd.append("lvl",lvl)
+            fd.append("action", action)
+            fd.append("min_len", length)
+            
+    
+            $.ajax({
+            type: "POST",
+            url: "/search_partial_match",
+            data : fd,
+            contentType: false,
+            processData: false,
+            beforeSend: function(){
+                 $('.results-content-2').html("<h4>Please wait until your request is processed ....</h4>");
+                 $("#action_3").prop('disabled', true);
+    
+            },
+            success: function(response){
+               if(response.results == 'error'){
+                    $(".results-content-2").html('<h4>'+response.error.toString()+'</h4>');
+               }
+               else{
+                    s = getResultStringPartial(response);
+    
+                    $(".results-content-2").html(s);
+               }
+               $("#action_3").prop('disabled', false);
+             
+            },
+            error: function(jqXHR, textStatus, errorThrown) { 
+                $('.results-content-2').html("<h4>Error occured... Please recheck and Try again!!</h4>");
+                $("#action_3").prop('disabled', false);
+            }
+            
+            });
+    
+           
+        }
+    
+        partialFunction_2 = function(e) {
+        
+            e.preventDefault();
+        
+            lang = $(".lang_4:checked").val();
+            lvl = $('input#lvl_4').val();
+            action = 'Submit Text';
+            content = $("#content_2").val();
+            length = $(".min_len_2:checked").val();
+            
+            var fd = new FormData();
+            fd.append("content", content)
+            fd.append("lang",lang)
+            fd.append("lvl",lvl)
+            fd.append("action", action)
+            fd.append("min_len", length)
+    
+            $.ajax({
+            type: "POST",
+            url: "/search_partial_match",
+            data : fd,
+            contentType: false,
+            processData: false,
+            beforeSend: function(){
+                 $('.results-content-2').html("<h4>Please wait until your request is processed ....</h4>");
+                 $("#action_4").prop('disabled', true);
+    
+            },
+            success: function(response){
+               if(response.results == 'error'){
+                    $(".results-content-2").html('<h4>'+response.error.toString()+'</h4>');
+               }
+               else{
+                s = getResultStringPartial(response);
+                $(".results-content-2").html(s);
+               }
+               $("#action_4").prop('disabled', false);
+            },
+            error: function(jqXHR, textStatus, errorThrown) { 
+                $('.results-content-2').html("<h4>Error occured... Please recheck and Try again!!</h4>");
+                $("#action_4").prop('disabled', false);
+            },
+            
+            });
+        }
+
+        getResultStringPartial = function(response){
+       
+        s = '<h4>Results</h4><br>'
+        if(response.resultsNotAvailable){
+            s+='<P class="result-target">No match</P>'
+        } 
+        else{
+            results = response.results;
+            for(i=0;i<results.length;i++){
+                result = results[i]
+
+                s+='<span class="label"><b>Matching Partial Source</b></span>'
+                s+='<p class="result-source">'
+
+                source = result.matching_partal_source
+                for(j=0;j<source.length;j++){
+                    sentence = source[j]
+                    s+=sentence.toString()+'<br>'
+                }
+                s+='</p>'
+                s+='<span class="label"><b>Matching Partial Target</b></span>'
+                s+='<p class="result-target">'
+
+                target = result.matching_partal_target
+                for(j=0;j<target.length;j++){
+                    sentence = target[j]
+                    s+=sentence.toString()+'<br>'
+                }
+
+                s+='</p>'
+                s+='<p>'
+                ids = result.documents_targets_ids
+                for(j=0;j<ids.length;j++){
+                    id = ids[j]
+                    s+='<a href="http://simdocsin.projects.uom.lk/file_partials/'+ id.toString()+'.txt" download target="_blank">Download file</a><br>'
+              
+                }
+                s+='</p>'
+
+
+
+            }
+
+        }
+
+        return s;
+
+        }
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Welcome to {% endblock %}<img src="static/img/logo.png" alt="logo"/></h1>
+
+
+    <div class="tab">
+        <button id="mybutton" class="tablinks" onclick="openForm(event, 'asFile')">Submit files</button>
+        <button class="tablinks" onclick="openForm(event, 'asText')">Submit as text</button>
+    </div>
+      
+    <div id="asFile" class="tabcontent" style="display:none">
+        <h3>Submit files</h3>
+        <div class="form-group">
+                <form method=post enctype=multipart/form-data>
+                    <br>
+                    <label for="langs">Choose input language:</label>
+                <!--  <select name="langs" id="langs" multiple >
+                            <option value="en">English</option>
+                            <option value="si">Sinhala</option>
+                    </select><br>-->
+                <input type="radio" id="en" name="lang" value="en">
+                <label for="en">English</label>
+                <input type="radio" id="si" name="lang" value="si">
+                <label for="si">Sinhala</label><br>
+                    
+                    <br>
+                    <label for="lvl">Similarity level (between 1 and 5):</label>
+                    <input type="range" id="lvl" name="lvl" min="1" max="5"><br>
+
+                    <br>
+                    <h6>Upload source files</h6>
+                    <input type=file name=file[] multiple=''><br><br>
+                    <input type=submit name="action" value='Submit Files'>
+                </form>
+        </div>
+    </div>
+    <div id="asText" class="tabcontent" style="display:none">
+        <h3>Submit as text</h3>
+        <div class="form-group">
+                <form method="post">
+                    <br>
+                    <label for="langs">Choose input language:</label>
+                    <!--  <select name="langs" id="langs" multiple >
+                        <option value="en">English</option>
+                        <option value="si">Sinhala</option>
+                    </select><br>-->
+                    <input type="radio" id="en" name="lang" value="en">
+                    <label for="en">English</label>
+                    <input type="radio" id="si" name="lang" value="si">
+                    <label for="si">Sinhala</label><br>
+            
+                    <br>
+                    <label for="lvl">Similarity level (between 1 and 5):</label>
+                    <input type="range" id="lvl" name="lvl" min="0" max="4"><br>
+                    
+                    <label for="content">Content</label>
+                    <textarea name="content" placeholder="Post content"
+                              class="form-control">{{ request.form['content'] }}</textarea>
+                    <input type="submit" name="action" value = 'Submit Text'>
+                </form>
+        </div>
+    </div>
+
+<div >
+    <h4>Results</h4><br>
+    
+    {% for result in results %}
+                  <h6>Source :- </h6>
+                  <p style="background-color:rgb(207, 245, 215)">{{ result.source }}</p>
+                  <h6>Targets :- </h6>
+                  {% for id, target in result.target %}
+                  <p style="background-color:rgb(241, 216, 224)">{{ target }}</p>
+                  {% if id>=0 %}
+                  <a href="file:///C:/Users/Udhan/Desktop/FYP/outputs/{{ id }}.txt" download target="_blank">Download</a>
+                  {% endif %}
+                  {% endfor %}
+               
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+
+

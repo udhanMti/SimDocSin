@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to <img src="static/img/logo.png" alt="logo" width="150" height="150"/></h1>
+
+
+    <div class="tab">
+        <button id="mybutton" class="tablinks" onclick="openForm(event, 'asFile')">Submit file</button>
+        <button class="tablinks" onclick="openForm(event, 'asText')">Submit as text</button>
+    </div>
+      
+    <div id="asFile" class="tabcontent" style="display:none">
+        <h4>Submit files</h4>
+        <div class="form-group">
+                <form id='request-form-1' name='request-form-1' method=post enctype=multipart/form-data>
+                    <br>
+                    <label for="langs"><b>Choose input language:</b></label>
+        
+                <input type="radio" class="lang" name="lang" value="en">
+                <label for="en">English</label>
+                <input type="radio" class="lang" name="lang" value="si">
+                <label for="si">Sinhala</label><br>
+                    
+                    <br>
+                    <label for="lvl"><b>Similarity level (between 1 and 5):</b></label>
+                    <input type="range" id="lvl" name="lvl" min="0" max="4"><br>
+
+                    <br>
+                    <b>Upload source file</b>
+                    <input type=file id=myFile name=myFile><br><br>
+                    <input onclick="myFunction(event)" class='button1' type=submit name="action" id="action" value='Submit Files'>
+                </form>
+        </div>
+    </div>
+    <div id="asText" class="tabcontent" style="display:none">
+        <h4>Submit as text</h4>
+        <div class="form-group">
+                <form id='request-form-2' name='request-form-2' method="post">
+                    <br>
+                    <label for="langs_2"><b>Choose input language:</b></label>
+                    <!--  <select name="langs" id="langs" multiple >
+                        <option value="en">English</option>
+                        <option value="si">Sinhala</option>
+                    </select><br>-->
+                    <input type="radio" class="lang_2" name="lang_2" value="en">
+                    <label for="en">English</label>
+                    <input type="radio" class="lang_2" name="lang_2" value="si">
+                    <label for="si">Sinhala</label><br>
+            
+                    <br>
+                    <label for="lvl_2"><b>Similarity level (between 1 and 5):</b></label>
+                    <input type="range" id="lvl_2" name="lvl_2" min="0" max="4"><br><br>
+                    
+                    <label for="content"><b>Content</b></label>
+                    <textarea id='content' name="content" placeholder="Post content"
+                              class="form-control">{{ request.form['content'] }}</textarea><br>
+                    <input onclick="myFunction_2(event)" class='button1' type="submit" name="action_2" id="action_2" value = 'Submit Text'>
+                </form>
+        </div>
+    </div><br><br>
+
+<div class='results-content'>
+    
+</div>
+
+{% endblock %}
+
+
+

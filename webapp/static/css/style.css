@@ -1,0 +1,79 @@
+h1 {
+    color: black;
+    text-align: center;
+    
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border-radius: 4px;
+  
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  border-radius: 4px;
+
+  }
+
+  .button1 {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color: white;
+    background-color: black;
+    border-radius: 4px;
+  }
+  
+  /* Change background color of buttons on hover */
+
+/*.tab button:hover {
+    background-color: #ddd;
+  }
+  */
+  /* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: orange;
+  }
+  
+  /* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+
+.result-source {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color: rgb(193, 250, 193)
+}
+
+.result-target {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: rgb(252, 197, 197)
+}
+
+.label {
+  border-radius: 4px;
+  background-color: rgb(201, 204, 201);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  padding-left: 5%;
+  padding-right: 5%;
+}

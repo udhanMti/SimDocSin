@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to <img src="static/img/logo.png" alt="logo" width="150" height="150"/></h1>
+<h2 style="text-align:center">Partial Matching</h2>
+<div class="tab">
+    <button id="mybutton" class="tablinks" onclick="openForm(event, 'asFile')">Submit file</button>
+    <button class="tablinks" onclick="openForm(event, 'asText')">Submit as text</button>
+</div>
+
+<div id="asFile" class="tabcontent" style="display:none">
+    <h4>Submit file</h4>
+    <div class="form-group">
+            <form id='request-form-3' name='request-form-3' method=post enctype=multipart/form-data>
+                <br>
+                <label for="langs_3"><b>Choose input language:</b></label>
+            
+            <input type="radio" class="lang_3" name="lang_3" value="en">
+            <label for="en">English</label>&nbsp;&nbsp;
+            <input type="radio" class="lang_3" name="lang_3" value="si">
+            <label for="si">Sinhala</label><br>
+                
+                
+                <label for="lvl_3"><b>Similarity level (between 1 and 5):</b></label>
+                <input type="range" id="lvl_3" name="lvl_3" min="1" max="5"><br>
+
+                
+                <label for="min_len"><b>Choose Required Min Length:</b></label>
+                <input type="radio" id="1" class="min_len" name="min_len" value="1">
+                <label for="en">1</label>&nbsp;&nbsp;
+                <input type="radio" id="1+" class="min_len" name="min_len" value="1+">
+                <label for="si">> 1</label>&nbsp;&nbsp;
+                <input type="radio" id="2+" class="min_len" name="min_len" value="2+">
+                <label for="en">> 2</label>&nbsp;&nbsp;
+                <input type="radio" id="5+" class="min_len" name="min_len" value="5+">
+                <label for="si">> 5</label>&nbsp;&nbsp;
+                <input type="radio" id="10+" class="min_len" name="min_len" value="10+">
+                <label for="en">> 10</label><br>
+                
+                <b>Upload source file</b>
+                <input type=file id=myFile_2 name=myFile_2><br><br>
+                <input onclick="partialFunction(event)" class='button1' type=submit name="action_3" value='Submit File'>
+            </form>
+    </div>
+</div>
+<div id="asText" class="tabcontent" style="display:none">
+    <h4>Submit as text</h4>
+    <div class="form-group">
+            <form id='request-form-4' name='request-form-4' method="post">
+                <br>
+                <label for="langs_4"><b>Choose input language:</b></label>
+        
+                <input type="radio" class="lang_4" name="lang_4" value="en">
+                <label for="en">English</label>&nbsp;&nbsp;
+                <input type="radio" class="lang_4" name="lang_4" value="si">
+                <label for="si">Sinhala</label><br>
+        
+                
+                <label for="lvl_4"><b>Similarity level (between 1 and 5):</b></label>
+                <input type="range" id="lvl_4" name="lvl_4" min="0" max="4"><br>
+
+                
+                <label for="min_len_2"><b>Choose Required Min Length:</b></label>
+                <input type="radio" id="1" class="min_len_2" name="min_len_2" value="1">
+                <label for="en">1</label>&nbsp;&nbsp;
+                <input type="radio" id="1+" class="min_len_2" name="min_len_2" value="1+">
+                <label for="si">> 1</label>&nbsp;&nbsp;
+                <input type="radio" id="2+" class="min_len_2" name="min_len_2" value="2+">
+                <label for="en">> 2</label>&nbsp;&nbsp;
+                <input type="radio" id="5+" class="min_len_2" name="min_len_2" value="5+">
+                <label for="si">> 5</label>&nbsp;&nbsp;
+                <input type="radio" id="10+" class="min_len_2" name="min_len_2" value="10+">
+                <label for="en">> 10</label><br>
+                
+                <label for="content_2"><b>Content</b></label>
+                    <textarea id='content_2' name="content_2" placeholder="Post content"
+                              class="form-control">{{ request.form['content'] }}</textarea><br>
+                    <input onclick="partialFunction_2(event)" class='button1' type="submit" id="action_4" name="action_4" value = 'Submit Text'>
+            </form>
+    </div>
+</div><br><br>
+
+<div class='results-content-2'>
+
+</div>
+
+
+{% endblock %}
