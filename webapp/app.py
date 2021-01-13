@@ -3,7 +3,7 @@ from werkzeug.exceptions import abort
 from werkzeug.utils import secure_filename
 import os
 import sys
-sys.path.insert(1, 'C:/Users/Udhan/Desktop/FYP/MassDoc/MassivelyDocAlignment')
+sys.path.insert(1, '../../SimDocSin/')
 from webapp_controller.main_app_controller import main ##This function takes EN doc as source and output to similar SI doc
 from webapp_controller.partial_match_app_controller import main_partial
 import json
@@ -11,9 +11,9 @@ import json
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
 
-UPLOAD_FOLDER = 'C:/Users/Udhan/Desktop/FYP/uploads'
-OUTPUT_FOLDER = 'C:/Users/Udhan/Desktop/FYP/outputs'
-OUTPUT_FOLDER_PARTIALS = 'C:/Users/Udhan/Desktop/FYP/outputs_partials'
+UPLOAD_FOLDER = 'outputs'
+OUTPUT_FOLDER = 'outputs'
+OUTPUT_FOLDER_PARTIALS = 'outputs'
 ALLOWED_EXTENSIONS = {'txt'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['OUTPUT_FOLDER'] = OUTPUT_FOLDER
