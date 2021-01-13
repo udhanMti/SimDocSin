@@ -1,9 +1,5 @@
-import requests
-from doc_to_sentence import doc_to_sentence#,doc_to_sentence_si
+from splitter.doc_to_sentence import doc_to_sentence#,doc_to_sentence_si
 #import embed_custom
-import numpy as np
-import os
-import sys
 from laserembeddings import Laser
 
 laser = Laser()

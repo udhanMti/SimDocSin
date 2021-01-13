@@ -15,5 +15,5 @@ outputs = {
 }
 
 db = {
-
+    'path' : ''
 }

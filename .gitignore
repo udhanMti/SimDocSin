@@ -4,3 +4,6 @@
 temp.py
 /.idea
 __pycache__
+/embed_data
+/db
+/index

@@ -7,7 +7,6 @@ from extract_digits import extract_digits, get_digit_similarity
 
 
 def main(sources, threshold_index, source_lang='en'):
-    # print(threshold_index, flush=True)
     threshold = 0.965 + ((0.99 - 0.965) / 4) * (4 - int(threshold_index))
     target_lang = 'si'
     if (source_lang == 'si'):
@@ -40,7 +39,7 @@ def main(sources, threshold_index, source_lang='en'):
     print(matches_s)
     results = []
     targets_count = 0
-    target_digits = np.load('../MassDoc/army/' + target_lang + '_digits.npy', allow_pickle=True)
+    target_digits = np.load('../db/' + target_lang + '_digits.npy', allow_pickle=True)
 
     for key in matches_s.keys():
         result = {}
@@ -73,14 +72,14 @@ def main(sources, threshold_index, source_lang='en'):
                 temp = {k: v for k, v in sorted(matching_targets.items(), key=lambda item: item[1], reverse=True)}
 
                 for k in temp.keys():
-                    target_documents = open('../MassDoc/army/' + str(k // 1000) + '/doc' + target_lang + '/' + str(
+                    target_documents = open('../db/' + str(k // 1000) + '/doc' + target_lang + '/' + str(
                         k % 1000) + '.txt').read()
                     matching_target_documents.append((targets_count, target_documents))
                     targets_count += 1
 
             else:
                 for k in matches_s[key]:
-                    target_documents = open('../MassDoc/army/' + str(k[0] // 1000) + '/doc' + target_lang + '/' + str(
+                    target_documents = open('../db/' + str(k[0] // 1000) + '/doc' + target_lang + '/' + str(
                         k[0] % 1000) + '.txt').read()
                     matching_target_documents.append((targets_count, target_documents))
                     targets_count += 1

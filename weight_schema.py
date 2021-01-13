@@ -1,5 +1,5 @@
-from doc_to_sentence import doc_to_sentence#, doc_to_sentence_si
-from sentence_to_word import sentence_to_word, sentence_to_word_si
+from splitter.doc_to_sentence import doc_to_sentence
+from splitter.sentence_to_word import sentence_to_word
 import math
 
 def get_sentence_frequency_list(doc, lang):

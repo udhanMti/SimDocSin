@@ -1,13 +1,11 @@
 import json
-import numpy as np
-from laser_control import get_embeddig_list
-from extract_digits import extract_digits
-from extract_ne import extract_names, extract_designations
+from embedder.laser_control import get_embeddig_list
+
 
 from weight_schema import *
 
 
-file  = open('data/dms_checked.json',encoding='utf8')
+file  = open('../embed_data/hiru_cleaned.json',encoding='utf8')
 data = json.load(file)
 
 parallel =[]

@@ -2,23 +2,21 @@ import json
 from embedder.laser_control import get_embeddig_list
 from greedy_mover_distance import greedy_mover_distance
 from weight_schema import *
-from datetime import datetime
-# from margin_base import margin_base_score
-from doc_to_sentence import *
+from splitter.doc_to_sentence import *
 from annoy import AnnoyIndex
 
 import numpy as np
 
-# from scipy.stats import norm
+#  from scipy.stats import norm
 # import matplotlib.pyplot as plt
 f = 1024
 u = AnnoyIndex(f, 'euclidean')
-u.load('../MassDoc/test.ann')
+u.load('../index/test.ann')
 
-map_file = open('../MassDoc/sent_to_doc_map.json', encoding='utf8')
+map_file = open('../index/sent_to_doc_map.json', encoding='utf8')
 sent_to_doc_maps = json.load(map_file)
 
-map_file = open('../MassDoc/sent_count_map.json', encoding='utf8')
+map_file = open('../index/sent_count_map.json', encoding='utf8')
 sent_count_maps = json.load(map_file)
 
 
@@ -136,21 +134,21 @@ def main_partial(source, threshold_index, threshold_length, source_lang='en'):
     global u, map_file, sent_to_doc_maps, sent_count_maps
     if (source_lang == 'si'):
         u = AnnoyIndex(f, 'euclidean')
-        u.load('../MassDoc/test_en.ann')
+        u.load('../index/test_en.ann')
 
-        map_file = open('../MassDoc/sent_to_doc_map_en.json', encoding='utf8')
+        map_file = open('../index/sent_to_doc_map_en.json', encoding='utf8')
         sent_to_doc_maps = json.load(map_file)
 
-        map_file = open('../MassDoc/sent_count_map_en.json', encoding='utf8')
+        map_file = open('../index/sent_count_map_en.json', encoding='utf8')
         sent_count_maps = json.load(map_file)
     else:
         u = AnnoyIndex(f, 'euclidean')
-        u.load('../MassDoc/test.ann')
+        u.load('../index/test.ann')
 
-        map_file = open('../MassDoc/sent_to_doc_map.json', encoding='utf8')
+        map_file = open('../index/sent_to_doc_map.json', encoding='utf8')
         sent_to_doc_maps = json.load(map_file)
 
-        map_file = open('../MassDoc/sent_count_map.json', encoding='utf8')
+        map_file = open('../index/sent_count_map.json', encoding='utf8')
         sent_count_maps = json.load(map_file)
     # print(len(sent_to_doc_maps))
     source = source[0]
@@ -207,7 +205,7 @@ def main_partial(source, threshold_index, threshold_length, source_lang='en'):
 
         matching_doc_index = sent_to_doc_maps[str(i[1][0])]
         # matching_doc = target_docs[matching_doc_index]
-        matching_doc = open('../MassDoc/army/' + str(matching_doc_index // 1000) + '/doc' + target_lang + '/' + str(
+        matching_doc = open('../db/' + str(matching_doc_index // 1000) + '/doc' + target_lang + '/' + str(
             matching_doc_index % 1000) + '.txt').read()
 
         docs_targets_belong_to.append(matching_doc)
@@ -219,7 +217,7 @@ def main_partial(source, threshold_index, threshold_length, source_lang='en'):
         '''
         while (len(sentences_t) < len(i[1])):
             matching_doc_index = sent_to_doc_maps[str(i[1][len(sentences_t)])]
-            matching_doc = open('../MassDoc/army/' + str(matching_doc_index // 1000) + '/doc'+target_lang+'/' + str(matching_doc_index % 1000) + '.txt').read()
+            matching_doc = open('../MassDoc/db/' + str(matching_doc_index // 1000) + '/doc'+target_lang+'/' + str(matching_doc_index % 1000) + '.txt').read()
             sentences_t.extend(doc_to_sentence(matching_doc, target_lang))
         '''
 
@@ -230,7 +228,7 @@ def main_partial(source, threshold_index, threshold_length, source_lang='en'):
             if (relative_index > len(sentences_t) - 1):
                 matching_doc_index += 1
                 matching_doc = open(
-                    '../MassDoc/army/' + str(matching_doc_index // 1000) + '/doc' + target_lang + '/' + str(
+                    '../db/' + str(matching_doc_index // 1000) + '/doc' + target_lang + '/' + str(
                         matching_doc_index % 1000) + '.txt').read()
 
                 docs_targets_belong_to.append(matching_doc)

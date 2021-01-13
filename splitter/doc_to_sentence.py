@@ -1,6 +1,6 @@
 from sentence_splitter import SentenceSplitter
-from sentence_to_word import sentence_to_word
-from tokenizer_new import SinhalaTokenizer as SinhalaTokenizer_new
+from splitter.sentence_to_word import sentence_to_word
+from splitter.tokenizer_new import SinhalaTokenizer as SinhalaTokenizer_new
 import nltk.data
 nltk.download('punkt')
 # import sys
@@ -10,7 +10,7 @@ from sinling import SinhalaTokenizer
 
 tokenizer = SinhalaTokenizer()
 tokenizer_new = SinhalaTokenizer_new()
-splitter = SentenceSplitter(language='en', non_breaking_prefix_file='E:\simdocsin\SimDocSin\en.txt')
+splitter = SentenceSplitter(language='en', non_breaking_prefix_file='E:\simdocsin\SimDocSin\splitter\en.txt')
 
 
 def doc_to_sentence_new(doc, lang):
