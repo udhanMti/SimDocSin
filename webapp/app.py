@@ -11,9 +11,9 @@ import json
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
 
-UPLOAD_FOLDER = 'outputs'
-OUTPUT_FOLDER = 'outputs'
-OUTPUT_FOLDER_PARTIALS = 'outputs'
+UPLOAD_FOLDER = '../../SimDocSin/outputs'
+OUTPUT_FOLDER = '../../SimDocSin/outputs'
+OUTPUT_FOLDER_PARTIALS = '../../SimDocSin/outputs'
 ALLOWED_EXTENSIONS = {'txt'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['OUTPUT_FOLDER'] = OUTPUT_FOLDER
@@ -93,7 +93,7 @@ def search_partial_match():
                 #content = ''
                 
                 try:
-                    source_file = open(os.path.join(app.config['UPLOAD_FOLDER'], filename),'r')
+                    source_file = open(os.path.join(app.config['UPLOAD_FOLDER'], filename),'r',encoding='utf-8')
                     content = source_file.read()
                     sources.append(content)
         
@@ -183,7 +183,7 @@ def full_match():
                 #content = ''
                 
                 try:
-                    source_file = open(os.path.join(app.config['UPLOAD_FOLDER'], filename),'r')#, errors='ignore')
+                    source_file = open(os.path.join(app.config['UPLOAD_FOLDER'], filename),'r',encoding='utf-8')#, errors='ignore')
                     content = source_file.read()
 
                     sources.append(content)

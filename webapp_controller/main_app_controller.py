@@ -33,10 +33,9 @@ def main(sources, threshold_index, source_lang='en'):
     scores = margin_base_score(source_docs, source_docs_weights_sent_len_normalized, target_lang)  # {}
 
     sorted_scores = {k: v for k, v in sorted(scores.items(), key=lambda item: item[1])}
-    print(sorted_scores)
-    print(threshold)
+
     matches_s = best_matching_3(sorted_scores, threshold)
-    print(matches_s)
+
     results = []
     targets_count = 0
     target_digits = np.load('../db/' + target_lang + '_digits.npy', allow_pickle=True)
@@ -45,8 +44,6 @@ def main(sources, threshold_index, source_lang='en'):
         result = {}
         result['source'] = source_documents[key]
         if (len(matches_s[key]) == 0):
-            # print('No match')
-            # results.append([source_docs[key], "No match"])
             result['target'] = [(-1, 'No match')]
         else:
 
@@ -54,6 +51,7 @@ def main(sources, threshold_index, source_lang='en'):
 
             # s_names = source_names[key]
             # s_designations = source_designations[key]
+
             s_digits = source_digits[key]
             if (len(s_digits) > 0):
                 matching_targets = {}
@@ -73,14 +71,14 @@ def main(sources, threshold_index, source_lang='en'):
 
                 for k in temp.keys():
                     target_documents = open('../db/' + str(k // 1000) + '/doc' + target_lang + '/' + str(
-                        k % 1000) + '.txt').read()
+                        k % 1000) + '.txt', encoding='utf-8').read()
                     matching_target_documents.append((targets_count, target_documents))
                     targets_count += 1
 
             else:
                 for k in matches_s[key]:
                     target_documents = open('../db/' + str(k[0] // 1000) + '/doc' + target_lang + '/' + str(
-                        k[0] % 1000) + '.txt').read()
+                        k[0] % 1000) + '.txt',encoding='utf-8').read()
                     matching_target_documents.append((targets_count, target_documents))
                     targets_count += 1
 

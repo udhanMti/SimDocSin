@@ -30,12 +30,10 @@ def get_similarity_matrix(embeds1, threshold):
     for i, sent_s in enumerate(embeds1):
         # dict_s[i] = [-1,[]]
         lst = u.get_nns_by_vector(sent_s, 10, 100000)
-        # print(lst)
         x = []
         for j in lst:
-            # print(i,sent)
+
             # all_docs.append(maps[str(sent)])
-            # print(sent, maps[str(sent)])
             # for j, sent_t in enumerate(embeds2):
             sent_t = u.get_item_vector(j)  # embeds2[j]
 
@@ -106,7 +104,6 @@ def diagonal_extract(matrix, dict_s):
 
 def sequence_matching(matrix, dict_s, threshold_length):
     global u, map_file, sent_to_doc_maps, sent_count_maps
-    # print(matrix, flush=True)
     diagonals = []
     while len(matrix) > 0:
         d = diagonal_extract(matrix, dict_s)
@@ -115,7 +112,6 @@ def sequence_matching(matrix, dict_s, threshold_length):
         t = []
 
         for i in d:
-            # print(sentences_t[i[1]])
             if (i[1] not in t):
                 t.append(i[1])
 
@@ -150,7 +146,6 @@ def main_partial(source, threshold_index, threshold_length, source_lang='en'):
 
         map_file = open('../index/sent_count_map.json', encoding='utf8')
         sent_count_maps = json.load(map_file)
-    # print(len(sent_to_doc_maps))
     source = source[0]
 
     results = []
@@ -180,14 +175,13 @@ def main_partial(source, threshold_index, threshold_length, source_lang='en'):
     # doc_s = doc['content_' + source_lang]
     source_embedd = get_embeddig_list(source, source_lang)
     matrix, dict_s = get_similarity_matrix(source_embedd, threshold)
-    # print(matrix)
+
     sentences_s = doc_to_sentence(source, source_lang)
     diagonals = sequence_matching(matrix, dict_s, min_length)
-    # print(len(sentences_s), flush=True)
-    # print(len(source_embedd), flush=True)
+
     matching_partials = {}
     matching_partials_scores = {}
-    # print(diagonals)
+
     target_doc_id = 0
     for index, i in enumerate(diagonals):
         partial_source = []
@@ -195,7 +189,7 @@ def main_partial(source, threshold_index, threshold_length, source_lang='en'):
 
         partial_embed_source = []
         partial_embed_target = []
-        print(i[0], flush=True)
+
         for j in i[0]:
             partial_embed_source.append(source_embedd[j])
             partial_source.append(sentences_s[j])
@@ -206,7 +200,7 @@ def main_partial(source, threshold_index, threshold_length, source_lang='en'):
         matching_doc_index = sent_to_doc_maps[str(i[1][0])]
         # matching_doc = target_docs[matching_doc_index]
         matching_doc = open('../db/' + str(matching_doc_index // 1000) + '/doc' + target_lang + '/' + str(
-            matching_doc_index % 1000) + '.txt').read()
+            matching_doc_index % 1000) + '.txt', encoding='utf-8').read()
 
         docs_targets_belong_to.append(matching_doc)
         docs_targets_ids.append(target_doc_id)
@@ -229,7 +223,7 @@ def main_partial(source, threshold_index, threshold_length, source_lang='en'):
                 matching_doc_index += 1
                 matching_doc = open(
                     '../db/' + str(matching_doc_index // 1000) + '/doc' + target_lang + '/' + str(
-                        matching_doc_index % 1000) + '.txt').read()
+                        matching_doc_index % 1000) + '.txt', encoding='utf-8').read()
 
                 docs_targets_belong_to.append(matching_doc)
                 docs_targets_ids.append(target_doc_id)

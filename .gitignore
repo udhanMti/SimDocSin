@@ -6,4 +6,5 @@ temp.py
 __pycache__
 /embed_data
 /db
-/index
+/index/
+/outputs/
