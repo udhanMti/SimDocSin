@@ -58,9 +58,13 @@ def main(sources, threshold_index, source_lang='en'):
                 x = 0
                 y = len(matches_s[key])
                 for candidate in matches_s[key]:
+                    # kk=candidate[0]
+                    # target_documents = open('../db/' + str(kk // 1000) + '/doc' + target_lang + '/' + str(
+                    #     kk % 1000) + '.txt', encoding='utf-8').read()
                     ne_similarity = 0  # get_ne_similarity(s_names, s_designations, target_documents[candidate[0]])
                     digit_similarity = get_digit_similarity(s_digits, target_digits[candidate[0]])
                     matching_targets[candidate[0]] = digit_similarity + ne_similarity + (y - x) * 0.00001
+                    # if digit+en = 0 then order
                     x += 1
                     # if(digit_similarity>0.3):
                     #    result['target'] =  target_docs[candidate[0]]
