@@ -1,5 +1,5 @@
 import re
-from doc_to_sentence import doc_to_sentence
+from splitter.doc_to_sentence import doc_to_sentence
 
 def extract_digits(doc, lang):
     sentences = doc_to_sentence(doc, lang)

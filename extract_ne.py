@@ -1,5 +1,4 @@
 import re
-import json
 
 en_designations_file = open("data/designation.en", encoding="utf8")
 si_designations_file = open("data/designation.si", encoding="utf8")

@@ -3,7 +3,7 @@ from werkzeug.exceptions import abort
 from werkzeug.utils import secure_filename
 import os
 import sys
-sys.path.insert(1, 'C:/Users/Udhan/Desktop/FYP/MassDoc/MassivelyDocAlignment')
+sys.path.insert(1, '../../SimDocSin/')
 from webapp_controller.main_app_controller import main ##This function takes EN doc as source and output to similar SI doc
 from webapp_controller.partial_match_app_controller import main_partial
 import json
@@ -11,9 +11,9 @@ import json
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
 
-UPLOAD_FOLDER = 'C:/Users/Udhan/Desktop/FYP/uploads'
-OUTPUT_FOLDER = 'C:/Users/Udhan/Desktop/FYP/outputs'
-OUTPUT_FOLDER_PARTIALS = 'C:/Users/Udhan/Desktop/FYP/outputs_partials'
+UPLOAD_FOLDER = '../../SimDocSin/outputs'
+OUTPUT_FOLDER = '../../SimDocSin/outputs'
+OUTPUT_FOLDER_PARTIALS = '../../SimDocSin/outputs'
 ALLOWED_EXTENSIONS = {'txt'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['OUTPUT_FOLDER'] = OUTPUT_FOLDER
@@ -93,7 +93,7 @@ def search_partial_match():
                 #content = ''
                 
                 try:
-                    source_file = open(os.path.join(app.config['UPLOAD_FOLDER'], filename),'r')
+                    source_file = open(os.path.join(app.config['UPLOAD_FOLDER'], filename),'r',encoding='utf-8')
                     content = source_file.read()
                     sources.append(content)
         
@@ -183,7 +183,7 @@ def full_match():
                 #content = ''
                 
                 try:
-                    source_file = open(os.path.join(app.config['UPLOAD_FOLDER'], filename),'r')#, errors='ignore')
+                    source_file = open(os.path.join(app.config['UPLOAD_FOLDER'], filename),'r',encoding='utf-8')#, errors='ignore')
                     content = source_file.read()
 
                     sources.append(content)

@@ -12,3 +12,8 @@ temp.py
 /embedder/__pycache__
 /webapp/__pycache__
 /webapp_controller/__pycache__
+__pycache__
+/embed_data
+/db
+/index/
+/outputs/
