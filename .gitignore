@@ -3,3 +3,12 @@
 /ann/
 temp.py
 /.idea
+/embed_data
+/db
+/splitter
+/index
+/outputs
+/__pycache__
+/embedder/__pycache__
+/webapp/__pycache__
+/webapp_controller/__pycache__
