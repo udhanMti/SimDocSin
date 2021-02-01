@@ -4,7 +4,7 @@ import os
 # from extract_ne import extract_names, extract_designations
 from extract_digits import extract_digits
 from datetime import datetime
-
+from preprocess.filename import get_file_paths
 
 start = datetime.now()
 
@@ -15,54 +15,14 @@ si_digits = []
 # en_designations = []
 # en_sent_count = []
 
-
 print("Start Loading Target Documents")
-path = '../embed_data'
-
-file_names = ['embedding']
-'''
-file_names = ['embedding_army_0_1000', 'embedding_army_1000_1039', 
-              'embedding_hiru_cleaned',
-              'embedding_defence_0_705', 'embedding_wsws_new_222',
-              'embedding_wsws_0_350', 'embedding_wsws_350_700', 'embedding_wsws_700_1000',
-              'embedding_wsws_1000_1350', 'embedding_wsws_1350_1700', 'embedding_wsws_1700_2000',
-'embedding_dms_pairs_101_150','embedding_dms_pairs_151_175','embedding_dms_pairs_176_200','embedding_dms_pairs_201_225','embedding_dms_pairs_226_237',
-'embedding_dms_non_pairs','embedding_itn_sinhala_0_1000','embedding_newslk_sin_0_1000','embedding_sirasa_local_sinhala_0_1000','embedding_sirasa_local_sinhala_1000_2000','embedding_hiru_40000_41000']
-
-
-
-file_names = ['embedding_army_0_1000', 'embedding_army_1000_1039', 
-              'embedding_hiru_cleaned',
-              'embedding_defence_0_705', 'embedding_wsws_new_222',
-              'embedding_wsws_0_350', 'embedding_wsws_350_700', 'embedding_wsws_700_1000',
-              'embedding_wsws_1000_1350', 'embedding_wsws_1350_1700', 'embedding_wsws_1700_2000',
-              'embedding_dms_audit', 'embedding_dms_comm_reports', 'embedding_dms_gov_site', 'embedding_dms_others',
-              'embedding_dms_annual_reports', 'embedding_dms_circular_sinhala',
-              'embedding_dms_official_letters_sinhala']
-
-
-sinhala_data_types = ['embedding_itn_sinhala_', 'embedding_sirasa_local_sinhala_', 'embedding_newslk_sin_',
-                      'embedding_hiru_']
-
-end_no = [22000, 30000, 10000, 43000]
-start_no = [0, 0, 0, 10000]
-for i in range(0, 4):
-    for j in range(start_no[i], end_no[i], 1000):
-        f_name = sinhala_data_types[i] + str(j) + '_' + str(j + 1000)
-        file_names.append(f_name)
-
-#limit = 655
-'''
+paths= get_file_paths()
 i = 0
-for file_name in file_names:
+for file_name in paths:
     print(file_name)
-    file = open(path + '/' + file_name + '.json', encoding='utf8')
+    file = open(filename, encoding='utf8')
     data = json.load(file)
 
-    # if (file_name == file_names[-1]):
-    #     limit = 676
-    # else:
-    #     limit = len(data)
     limit = len(data)
 
     for j in range(limit):
