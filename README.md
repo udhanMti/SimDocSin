@@ -24,7 +24,7 @@ You will need python 3.x. You can build the enviornment as follows.<br>
 ### Run SimDocSin
 ```flask run```
 
-### Contributers
+### Contributors
 Udhan Isuranga (udhanisuranga.16@cse.mrt.ac.lk) <br>
 Janaka Sandaruwan (janakasadaruwan.16@cse.mrt.ac.lk) <br>
 Udesh Athukorala (udeshathukorala.16@cse.mrt.ac.lk) <br>
