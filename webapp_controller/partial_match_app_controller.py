@@ -125,6 +125,51 @@ def sequence_matching(matrix, dict_s, threshold_length):
                 matrix.remove(each)
     return diagonals
 
+def post_processor(diagonals, gap_threshold, min_length):
+    diagonals = sorted(diagonals, key=lambda x: x[0][0])
+    # gap_threshold = 40
+    # print(diagonals)
+    processed_diagonals = []
+    for i in range(len(diagonals)):
+        diagonal = diagonals[i]
+        temp = []
+        new_diagonal = diagonal
+        last = 0
+        # print("dioganal",diagonal)
+        # print("proocess_diagonal",processed_diagonals)
+        for j in range(len(processed_diagonals)):
+            last = j
+            pro_diagonal = processed_diagonals[j]
+            # print("pro_diagonal",pro_diagonal)
+            temp.append(pro_diagonal)
+            gap_s = (diagonal[0][0] - pro_diagonal[0][-1])
+            gap_t = (diagonal[1][0] - pro_diagonal[1][-1])
+            if ((gap_s <= gap_threshold) and (gap_s >= 0) and (gap_t <= gap_threshold) and (gap_t >= 0)):
+                s = [_s for _s in range(pro_diagonal[0][0], diagonal[0][-1] + 1)]
+                t = [_t for _t in range(pro_diagonal[1][0], diagonal[1][-1] + 1)]
+                new_diagonal = (s, t)
+                temp = temp[:-1]
+                break
+            elif ((gap_s <= gap_threshold) and (gap_t <= gap_threshold) and (pro_diagonal[1][0] <= diagonal[1][0])):
+                s = [_s for _s in range(pro_diagonal[0][0], max(pro_diagonal[0][-1], diagonal[0][-1]) + 1)]
+                t = [_t for _t in range(pro_diagonal[1][0], max(pro_diagonal[1][-1], diagonal[1][-1]) + 1)]
+                new_diagonal = (s, t)
+                temp = temp[:-1]
+                break
+        temp.append(new_diagonal)
+        # print("temp",temp)
+        temp.extend(processed_diagonals[last + 1:])
+        # print("temp_1",temp)
+        processed_diagonals = temp
+        # print(i, processed_diagonals)
+    # print(processed_diagonals)
+
+    final_diagonals = []
+    for diagonal in processed_diagonals:
+        if ((len(diagonal[1]) > min_length)):  # or (len(diagonal[1])>1)):
+            final_diagonals.append(diagonal)
+
+    return final_diagonals
 
 def main_partial(source, threshold_index, threshold_length, source_lang='en'):
     global u, map_file, sent_to_doc_maps, sent_count_maps
@@ -150,20 +195,20 @@ def main_partial(source, threshold_index, threshold_length, source_lang='en'):
 
     results = []
 
-    threshold = 0.62 + ((0.68 - 0.62) / 4) * (4 - int(threshold_index))
+    # threshold = 0.62 + ((0.68 - 0.62) / 4) * (4 - int(threshold_index))
     target_lang = 'si'
     if (source_lang == 'si'):
         target_lang = 'en'
 
     min_length = 0
-    if (threshold_length == '1+'):
-        min_length = 1
-    elif (threshold_length == '2+'):
-        min_length = 2
-    elif (threshold_length == '5+'):
-        min_length = 5
-    elif (threshold_length == '10+'):
-        min_length = 10
+    if (threshold_length != None):
+        min_length = int(threshold_length)-1
+    # elif (threshold_length == '2+'):
+    #     min_length = 2
+    # elif (threshold_length == '5+'):
+    #     min_length = 5
+    # elif (threshold_length == '10+'):
+    #     min_length = 10
 
     # file1 = open('../MassDoc/embed_data/embedding.json',
     #            encoding='utf8')
@@ -173,11 +218,18 @@ def main_partial(source, threshold_index, threshold_length, source_lang='en'):
     #    target_docs.append(doc['content_' + target_lang])
 
     # doc_s = doc['content_' + source_lang]
+
+    threshold = 0.62 + ((0.68 - 0.62) / 4) * (4 - int(threshold_index))
+    if (min_length>0) :
+        threshold =  0.525 + ((0.555 - 0.525) / 4) * int(threshold_index)
+
     source_embedd = get_embeddig_list(source, source_lang)
     matrix, dict_s = get_similarity_matrix(source_embedd, threshold)
 
     sentences_s = doc_to_sentence(source, source_lang)
     diagonals = sequence_matching(matrix, dict_s, min_length)
+
+    diagonals = post_processor(diagonals, 5 + 1, min_length)
 
     matching_partials = {}
     matching_partials_scores = {}
