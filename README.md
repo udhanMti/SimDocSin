@@ -67,7 +67,7 @@ For sinhala<br>
 ```python db_split.py en```
 
 ### Build Index Files
-Run ```indexing.py``` to build index files.<br><br>
+Run ```indexing.py``` to build index files.<br>(You should use same filename.py for both previous step and this step )<br><br>
 For english<br>
 ```python indexing.py si```<br>
 For sinhala<br>
