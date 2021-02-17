@@ -21,12 +21,14 @@ You will need python 3.x. You can build the enviornment as follows.<br>
 ```pip install -r requirements.txt```<br>
 Run below command to install the LASER models needed for embeddings.<br>
 ```python -m laserembeddings download-models```<br>
-### Create Data Folders
-You have create the following folders within SimDocSin directory.<br>
-<ul>* </ul>
-<ul>* </ul>
-
-### Create Index Files
+### Create Data Container Folders
+You have to create the following folders within SimDocSin directory.<br>
+```db``` - To contain embedded files <br>
+```index``` - To contain index files <br>
+```inputs``` - To contain documents inputted by users to the system <br>
+```outputs_full_match``` - To contain documents outputted by the system <br>
+```outputs_partial_match``` - To contain documents outputted by the system <br>
+### Build Index Files
 
 ### Run SimDocSin
 ```flask run```
