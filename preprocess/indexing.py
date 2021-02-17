@@ -4,6 +4,7 @@ import json
 import sys
 from datetime import datetime
 from preprocess.filename import get_file_paths
+sys.path.append('../../SimDocSin/')
 start = datetime.now()
 
 args = sys.argv

@@ -2,6 +2,7 @@ import json
 import numpy as np
 import os
 import sys
+sys.path.append('../../SimDocSin/')
 # from extract_ne import extract_names, extract_designations
 from extract_digits import extract_digits
 from datetime import datetime
