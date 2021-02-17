@@ -10,7 +10,7 @@ from sinling import SinhalaTokenizer
 
 tokenizer = SinhalaTokenizer()
 tokenizer_new = SinhalaTokenizer_new()
-splitter = SentenceSplitter(language='en', non_breaking_prefix_file='E:\simdocsin\SimDocSin\splitter\en.txt')
+splitter = SentenceSplitter(language='en', non_breaking_prefix_file='..\splitter\en.txt')
 
 
 def doc_to_sentence_new(doc, lang):
