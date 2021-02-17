@@ -1,5 +1,7 @@
 def get_file_paths(lang):
+    ### ADD Parallel Documents under both en and si blocks
     if lang == 'si':
+        ### return paths to sinhala documents
         path = '/content/drive/Shared drives/FYP/1M_db/'
         file_names = ['embedding_army_0_1000', 'embedding_dms_pairs_1_100', 'hiru_200', 'embedding_defence_0_705',
                       'embedding_wsws_new_222', 'embedding_army_1000_1039',
@@ -32,6 +34,7 @@ def get_file_paths(lang):
         '''
         return paths
     else:
+        ### return paths to english documents
         path = '/content/drive/Shared drives/FYP/1M_db/'
         file_names = ['embedding_army_0_1000', 'embedding_dms_pairs_1_100', 'hiru_200', 'embedding_defence_0_705',
                       'embedding_wsws_new_222', 'embedding_army_1000_1039',

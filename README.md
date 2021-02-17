@@ -28,10 +28,50 @@ You have to create the following folders within SimDocSin directory.<br>
 ```inputs``` - To contain documents inputted by users to the system <br>
 ```outputs_full_match``` - To contain documents outputted by the system <br>
 ```outputs_partial_match``` - To contain documents outputted by the system <br>
-### Build Index Files
+### Embed Documents
+Run below command to embed json list of documents using ```embedding_creator.py``` inside ```embedder``` folder.<br><br>
+```python embedding_creator.py path/to/input_file.json path/to/output_file.json```
 
-#### preprocessing step
-Add file names of the json files that contains documents and
+The format of the input json file should be in following format.<br>
+For english documents
+```
+[
+  {"content_en": "english document content"},
+  ...
+]
+```
+For sinhala documents
+```
+[
+  {"content_si": "sinhala document content"},
+  ...
+]
+```
+For parallel documents
+```
+[
+  {
+   "content_en": "english document content",
+   "content_si": "sinhala document content"
+  },
+  ...
+]
+```
+### Build Document Database
+Update paths to embed json files inside ```filename.py```
+
+Run ```db_split.py``` to build the document database.<br><br>
+For english<br>
+```python db_split.py si```<br>
+For sinhala<br>
+```python db_split.py en```
+
+### Build Index Files
+Run ```indexing.py``` to build the document database.<br><br>
+For english<br>
+```python indexing.py si```<br>
+For sinhala<br>
+```python indexing.py en```
 
 ### Run SimDocSin
 ```flask run```
