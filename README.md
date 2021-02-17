@@ -21,6 +21,9 @@ Here an user can submit a source document to get any matching partials of docume
 You will need python 3.x. You can build the enviornment as follows.<br>
 ```pip install -r requirements.txt```<br>
 
+#### preprocessing step
+Add file names of the json files that contains documents and
+
 ### Run SimDocSin
 ```flask run```
 
