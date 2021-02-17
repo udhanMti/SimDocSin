@@ -62,16 +62,16 @@ Update paths to embed json files inside ```filename.py```
 
 Run ```db_split.py``` to build the document database.<br><br>
 For english<br>
-```python db_split.py si```<br>
+```python db_split.py en```<br>
 For sinhala<br>
-```python db_split.py en```
+```python db_split.py si```
 
 ### Build Index Files
 Run ```indexing.py``` to build index files.<br>(You should use same filename.py for both previous step and this step )<br><br>
 For english<br>
-```python indexing.py si```<br>
+```python indexing.py en```<br>
 For sinhala<br>
-```python indexing.py en```
+```python indexing.py si```
 
 ### Run SimDocSin
 ```flask run```
