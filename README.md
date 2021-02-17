@@ -6,12 +6,10 @@ This system can be used to find similar documents or parts of documents of Sinha
 ##### Full Matching
 
 Here an user can submit a source document to get any matching complete document that exists in the system database in target language. Here the user has to set 3 input fields. <br> 
-* Input language - Language of the source document. It can be Sinhala or English.<br>
-<br>
+* Input language - Language of the source document. It can be Sinhala or English.
 * Similarity level - This indicates how much similarity you expect from a similar pair output by system. The user can give a value within the range from 1 to 5. Low value means there is a high chance of getting a similar document but the similarity can be relatively low while high value means that system can output a document with a relatively high similarity but the chance of getting a result is low. <br>
-<br>
 * Source file - Source document given as the input. It can be submitted as either a file or a text.<br>
-<br>
+
 ##### Partial Matching
 
 Here an user can submit a source document to get any matching partials of documents that exist in the system database in target language. Here also the user has to set the 3 inputs fields mentioned in the previous section. Apart from those there is another input field called Min Length. <br> 
