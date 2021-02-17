@@ -11,13 +11,13 @@ import numpy as np
 # import matplotlib.pyplot as plt
 f = 1024
 u = AnnoyIndex(f, 'euclidean')
-u.load('../index/test.ann')
-
-map_file = open('../index/sent_to_doc_map.json', encoding='utf8')
-sent_to_doc_maps = json.load(map_file)
-
-map_file = open('../index/sent_count_map.json', encoding='utf8')
-sent_count_maps = json.load(map_file)
+# u.load('../index/test.ann')
+#
+# map_file = open('../index/sent_to_doc_map.json', encoding='utf8')
+# sent_to_doc_maps = json.load(map_file)
+#
+# map_file = open('../index/sent_count_map.json', encoding='utf8')
+# sent_count_maps = json.load(map_file)
 
 
 def get_similarity_matrix(embeds1, threshold):
@@ -184,12 +184,12 @@ def main_partial(source, threshold_index, threshold_length, source_lang='en'):
         sent_count_maps = json.load(map_file)
     else:
         u = AnnoyIndex(f, 'euclidean')
-        u.load('../index/test.ann')
+        u.load('../index/test_si.ann')
 
-        map_file = open('../index/sent_to_doc_map.json', encoding='utf8')
+        map_file = open('../index/sent_to_doc_map_si.json', encoding='utf8')
         sent_to_doc_maps = json.load(map_file)
 
-        map_file = open('../index/sent_count_map.json', encoding='utf8')
+        map_file = open('../index/sent_count_map_si.json', encoding='utf8')
         sent_count_maps = json.load(map_file)
     source = source[0]
 
