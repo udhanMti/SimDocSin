@@ -11,9 +11,9 @@ import json
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
 
-UPLOAD_FOLDER = '../../SimDocSin/outputs'
-OUTPUT_FOLDER = '../../SimDocSin/outputs'
-OUTPUT_FOLDER_PARTIALS = '../../SimDocSin/outputs'
+UPLOAD_FOLDER = '../../SimDocSin/inputs'
+OUTPUT_FOLDER = '../../SimDocSin/outputs_full_match'
+OUTPUT_FOLDER_PARTIALS = '../../SimDocSin/outputs_partial_match'
 ALLOWED_EXTENSIONS = {'txt'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['OUTPUT_FOLDER'] = OUTPUT_FOLDER
@@ -99,6 +99,10 @@ def search_partial_match():
         
                 except IOError:
                     return jsonify({"results":'error',"error":'File reading error'})
+
+                except UnicodeDecodeError:
+                    return jsonify(
+                        {"results": 'error', "error": 'File contains undecodable characters. Try to submit as a text.'})
                 
                 #result = {}
                 #result['source'] = content
@@ -142,7 +146,7 @@ def full_match():
             sources = []
             content = request.form['content']
 
-            if content=='' or content==None:
+            if not content:
                 #flash('Content is required!')
                 return jsonify({"results":'error',"error":'Content is required'})
             else:
@@ -192,7 +196,11 @@ def full_match():
                     #flash('File reading error')
                     return jsonify({"results":'error',"error":'File reading error'})
 
-            #result = {}
+                except UnicodeDecodeError:
+                    return jsonify(
+                        {"results": 'error', "error": 'File contains undecodable characters. Try to submit as a text.'})
+
+                    #result = {}
             #result['source'] = content
             #result['target'] = main(content, lang) ##This function takes EN doc as source and output to similar SI doc
 
@@ -230,7 +238,7 @@ def get_matching_docs():
     if 'lvl' in request.form :
         lvl = request.form['lvl']
         if(lvl.isdigit()):
-            similarity_level = max( 0, min(4, int(lvl)))
+            similarity_level = max( 1, min(5, int(lvl))) - 1
         else:
             return jsonify({"error":"Value of 'lvl' parameter invalid"})
 
@@ -252,6 +260,9 @@ def get_matching_docs():
             sources.append(content)
         except IOError:
             return jsonify({"error":'File reading error'})
+
+        except UnicodeDecodeError:
+            return jsonify({"error": 'File reading error. File cotains undecodable character/s'})
     
     results = main(sources, similarity_level, lang) 
       
@@ -277,6 +288,13 @@ def get_partial_matchings():
         else:
             return jsonify({"error":"Value of 'lvl' parameter invalid"})
 
+    if 'min_len' in request.form:
+        min_len = request.form['min_len']
+        if (min_len.isdigit()):
+            minimum_length = min_len
+        else:
+            return jsonify({"error": "Value of 'min_len' parameter invalid"})
+
     if 'file' in request.files:
         file = request.files['file']
     else:
@@ -299,6 +317,9 @@ def get_partial_matchings():
 
         except IOError:
             return jsonify({"error":'File reading error'})
+
+        except UnicodeDecodeError:
+            return jsonify({"error": 'File reading error. File contains undecodable character/s'})
     
         results, resultsNotAvailable = main_partial(sources, similarity_level, minimum_length, lang) 
         if(resultsNotAvailable):

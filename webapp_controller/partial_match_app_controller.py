@@ -219,7 +219,7 @@ def main_partial(source, threshold_index, threshold_length, source_lang='en'):
 
     # doc_s = doc['content_' + source_lang]
 
-    threshold = 0.62 + ((0.68 - 0.62) / 4) * (4 - int(threshold_index))
+    threshold = 0.62 + ((0.68 - 0.62) / 4) * int(threshold_index)
     if (min_length>0) :
         threshold =  0.525 + ((0.555 - 0.525) / 4) * int(threshold_index)
 
