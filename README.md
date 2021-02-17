@@ -15,11 +15,15 @@ Here an user can submit a source document to get any matching complete document 
 
 Here an user can submit a source document to get any matching partials of documents that exist in the system database in target language. Here also the user has to set the 3 inputs fields mentioned in the previous section. Apart from those there is another input field called Min Length. <br> <ul> * Min Length - minimum number of sentences the user expected to have in a document partial. It can be 1, greater than 1, greater than 2, greater than 5 or greater than 10.</ul>
 
-#####How to Deploy SimDocSin
+## How to Deploy SimDocSin
 
-### Build SimDocSin
+### Install Dependencies
 You will need python 3.x. You can build the enviornment as follows.<br>
 ```pip install -r requirements.txt```<br>
+
+### Create Neccessary Folder
+
+### Create Index Files
 
 ### Run SimDocSin
 ```flask run```
