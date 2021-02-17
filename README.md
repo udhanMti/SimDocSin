@@ -19,8 +19,12 @@ Here an user can submit a source document to get any matching partials of docume
 ### Install Dependencies
 You will need python 3.x. You can build the enviornment as follows.<br>
 ```pip install -r requirements.txt```<br>
-
-### Create Neccessary Folder
+Run below command to install the LASER models needed for embeddings.<br>
+```python -m laserembeddings download-models```<br>
+### Create Data Folders
+You have create the following folders within SimDocSin directory.<br>
+<ul>* </ul>
+<ul>* </ul>
 
 ### Create Index Files
 
