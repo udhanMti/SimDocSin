@@ -19,10 +19,9 @@ si_digits = []
 # en_sent_count = []
 
 print("Start Loading Target Documents")
-paths= get_file_paths()
+paths= get_file_paths(lang)
 i = 0
-for file_name in paths:
-    print(file_name)
+for filename in paths:
     file = open(filename, encoding='utf8')
     data = json.load(file)
 

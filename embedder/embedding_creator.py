@@ -1,17 +1,19 @@
 import json
 from embedder.laser_control import get_embeddig_list
-
-
 from weight_schema import *
+import sys
 
+args =sys.argv
+filepath = args[1]
+output_file = args[2]
 
-file  = open('../embed_data/hiru_cleaned.json',encoding='utf8')
+file  = open(filepath,encoding='utf8')
 data = json.load(file)
 
 parallel =[]
 i=0
 
-for a in data[:25]:
+for a in data:
       print(i)
       i+=1
       if ('content_en' in a) :
@@ -33,5 +35,5 @@ for a in data[:25]:
       parallel.append(a)
 
 if len(parallel) > 0 :
-    with open("embedded_data/embedding_dms_checked.json", 'w', encoding="utf8") as outfile:
+    with open(output_file, 'w', encoding="utf8") as outfile:
         json.dump(parallel, outfile, ensure_ascii=False)
