@@ -42,7 +42,7 @@ for file_name in paths:
     count = count + len(embed_data)
     print(file_name + " : " + str(len(embed_data)))
 
-print("Create indexes for Total" + str(count) + "Traget Documents")
+print("Create indexes for Total" + str(count) + "Target Documents")
 
 t.build(25)
 # t.save('test.ann')

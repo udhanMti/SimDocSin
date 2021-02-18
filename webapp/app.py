@@ -153,7 +153,7 @@ def full_match():
                 sources.append(content)
                 #print(sources)
                 #print(similarity_level)
-                results = main(sources, similarity_level, lang) ##This function takes EN doc as source and output to similar SI doc
+                results, resultsNotAvailable = main(sources, similarity_level, lang) ##This function takes EN doc as source and output to similar SI doc
                 
                 for result in results:
                   for target in result['target']:
@@ -162,7 +162,8 @@ def full_match():
                         output_file.write(target[1])
                         output_file.close()
 
-                return jsonify({"results":results})
+                #return jsonify({"results":results})
+                return jsonify({"results": results, 'resultsNotAvailable': resultsNotAvailable})
         
         elif request.form['action'] == 'Submit Files':
 
@@ -206,8 +207,8 @@ def full_match():
 
             #results.append(result)
             #print(sources)
-            
-            results = main(sources, similarity_level, lang) ##This function takes EN doc as source and output to similar SI doc
+
+            results, resultsNotAvailable = main(sources, similarity_level, lang) ##This function takes EN doc as source and output to similar SI doc
             #i = 0
             for result in results:
               for target in result['target']:
@@ -217,8 +218,8 @@ def full_match():
 
                     output_file.close()
                 #i+=1
-    
-            return jsonify({"results":results})#render_template('index.html', results=results,)
+            return jsonify({"results": results, 'resultsNotAvailable': resultsNotAvailable})
+            #return jsonify({"results":results})#render_template('index.html', results=results,)
            
     return render_template('index.html')
            
@@ -263,10 +264,14 @@ def get_matching_docs():
 
         except UnicodeDecodeError:
             return jsonify({"error": 'File reading error. File cotains undecodable character/s'})
-    
-    results = main(sources, similarity_level, lang) 
+
+    results, resultsNotAvailable = main(sources, similarity_level, lang)
+
+    if (resultsNotAvailable):
+        return jsonify({"result": 'No partially matching documents'})
+    else:
       
-    return jsonify({"result":results})
+        return jsonify({"result":results})
 
 @app.route('/get_partial_matchings',methods = ['POST'])
 def get_partial_matchings():
