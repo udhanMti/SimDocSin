@@ -17,13 +17,13 @@ Here an user can submit a source document to get any matching partials of docume
 
 ## How to Deploy SimDocSin
 
-### Install Dependencies
+### 1. Install Dependencies
 You will need python 3.x. You can build the enviornment as follows.<br>
 ```pip install -r requirements.txt```<br>
 Run below command to install the LASER models needed for embeddings.<br>
 ```python -m laserembeddings download-models```<br>
 
-### Create Data Container Folders
+### 2. Create Data Container Folders
 Run ```build.sh``` or ```build.bat```.  It will create the following folders within SimDocSin directory.<br>
 ```db``` - To contain embedded files preprocessed for indexing <br>
 ```index``` - To contain index files <br>
@@ -37,7 +37,7 @@ Run ```build.sh``` or ```build.bat```.  It will create the following folders wit
 
 
 
-### Embed Documents
+### 3. Embed Documents
 #### Main option
 You can find already embeded documents from <a href="">here[Add link]</a> <br>
 You have to download and put those files to corresponding sub folder within the ```embeddings``` folder
@@ -93,19 +93,19 @@ After this step, the folder structure of the ```Embeddings``` folder as follows.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- ...<br>
 
 
-### Preprocess Embedding Database
+### 4. Preprocess Embedding Database
 
 Run both of following commands to preprocess embedding database for indexing.<br><br>
 ```python db_split.py en```<br>
 ```python db_split.py si```
 
-### Build Index Files
+### 5. Build Index Files
 Run both of following commands to build index files.<br>(You should use same filename.py for both previous step and this step )<br><br>
 ```python indexing.py en```<br>
 ```python indexing.py si```
 
 After this step, ```embeddings``` folder is no more needed.
-### Run SimDocSin
+### 6. Run SimDocSin
 Execute ```flask run``` within the webapp folder
 
 ### Contributors
