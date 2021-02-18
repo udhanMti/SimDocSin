@@ -24,8 +24,8 @@ Run below command to install the LASER models needed for embeddings.<br>
 ```python -m laserembeddings download-models```<br>
 
 ### Create Data Container Folders
-Run ```build.sh``` or ```build.bat``` to create the following folders within SimDocSin directory.<br>
-```db``` - To contain embedded files <br>
+Run ```build.sh``` or ```build.bat```.  It will create the following folders within SimDocSin directory.<br>
+```db``` - To contain embedded files preprocessed for indexing <br>
 ```index``` - To contain index files <br>
 ```inputs``` - To contain documents inputted by users to the system <br>
 ```outputs_full_match``` - To contain documents outputted by the system <br>
@@ -84,9 +84,9 @@ After this step, the folder structure of the ```Embeddings``` folder as follows.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- ...<br>
 
 
-### Build Document Database
+### Preprocess Embedding Database
 
-Run ```db_split.py``` to build the document database.<br><br>
+Run ```db_split.py``` to preprocess embedding database for indexing.<br><br>
 For english<br>
 ```python db_split.py en```<br>
 For sinhala<br>
