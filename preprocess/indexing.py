@@ -2,9 +2,9 @@ from annoy import AnnoyIndex
 print("Start Index Creation")
 import json
 import sys
+sys.path.append('../../SimDocSin/')
 from datetime import datetime
 from preprocess.filename import get_file_paths
-sys.path.append('../../SimDocSin/')
 start = datetime.now()
 
 args = sys.argv
@@ -25,11 +25,11 @@ i = 0
 document_count=0
 
 for file_name in paths:
-    file = open(file_name)
+    file = open(file_name,encoding='utf-8')
     embed_data = json.load(file)
 
     for j in range(len(embed_data)):
-        # si_doc = embed_data[j]['content_si']
+        # si_doc = Embeddings[j]['content_si']
         si_doc_embed = embed_data[j]['embed_'+lang]
 
         sent_count[document_count + 1] = sent_count[document_count] + len(si_doc_embed)
