@@ -35,11 +35,11 @@ Run ```build.sh``` or ```build.bat``` to create the following folders within Sim
 
 ### Embed Documents
 
------------
+
 To update----<br>
 Run below command to embed json list of documents using ```embedding_creator.py``` inside ```embedder``` folder.<br><br>
-```python embedding_creator.py path/to/input_file.json path/to/output_file.json```
---------------
+```python embedding_creator.py path/to/input_file.json file_type output_file_name```
+
 
 The format of the input json file should be in following format.<br>
 For english documents
