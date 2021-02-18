@@ -24,6 +24,7 @@ Run below command to install the LASER models needed for embeddings.<br>
 ```python -m laserembeddings download-models```<br>
 ### Create Data Container Folders
 You have to create the following folders within SimDocSin directory.<br>
+```embeddings``` - To contain initial embedded files which were in json format. Create 3 seperate folders **_sinhala_**, **_english_**, **_parallel_** under the embeddings folder to save sinhala, english and parallel embeddings seperately.  <br>
 ```db``` - To contain embedded files <br>
 ```index``` - To contain index files <br>
 ```inputs``` - To contain documents inputted by users to the system <br>
