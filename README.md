@@ -30,14 +30,20 @@ Run ```build.sh``` or ```build.bat```.  It will create the following folders wit
 ```inputs``` - To contain documents inputted by users to the system <br>
 ```outputs_full_match``` - To contain documents outputted by the system <br>
 ```outputs_partial_match``` - To contain documents outputted by the system <br>
-```embeddings```- To contain embedding json files
+```embeddings```- To contain embedding json files. This folder contains 3 sub folders.<br>
+&nbsp;```|--sinhala```- To contains embedding of Sinhala documents<br>
+&nbsp;```|--english```- To contain embeddings on English documents<br>
+&nbsp;```|--parallel```- To contain embeddings of parallel documents<br>
+
+
 
 ### Embed Documents
-You can find already embeded documents from <a href="">here[Add link]</a>
+You can find already embeded documents from <a href="">here[Add link]</a> <br>
 You have to download and put those files to corresponding sub folder within the ```embeddings``` folder
 
 ##### Alternative option
-If you want you can embed documents by yourself and use (but this is not recommended), run below command to embed json list of documents using ```embedding_creator.py``` inside ```embedder``` folder.<br><br>
+If you want you can embed documents by yourself and use (but this is not recommended) <br>
+Run below command to embed json list of documents using ```embedding_creator.py``` inside ```embedder``` folder.<br><br>
 <free>
 ```python embedding_creator.py path/to/input_file.json file_type output_file_name```
 
@@ -71,16 +77,16 @@ For parallel documents
 
 After this step, the folder structure of the ```Embeddings``` folder as follows.<br>
 .<br>
-|--Embeddings<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|--Parallel<br>
+|--embeddings<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|--parallel<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- parallel_json_file_name1.json<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- parallel_json_file_name2.json<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- ...<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|--Sinhala<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|--sinhala<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- sinhala_json_file_name1.json<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- sinhala_json_file_name2.json<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- ...<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|--English<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|--english<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- english_json_file_name1.json<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- english_json_file_name2.json<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- ...<br>
