@@ -5,3 +5,4 @@ laserembeddings==1.0.1
 sinling
 nltk
 annoy==1.17.0
+Flask
