@@ -30,7 +30,7 @@ Run ```build.sh``` or ```build.bat``` to create the following folders within Sim
 ```inputs``` - To contain documents inputted by users to the system <br>
 ```outputs_full_match``` - To contain documents outputted by the system <br>
 ```outputs_partial_match``` - To contain documents outputted by the system <br>
-```Embeddings```- To contain embedding json files
+```embeddings```- To contain embedding json files
 ```other folder name``` - To contain document json files [@udesh  build.bat & build.sh]
 
 ### Embed Documents
