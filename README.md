@@ -86,14 +86,14 @@ After this step, the folder structure of the ```Embeddings``` folder as follows.
 
 ### Preprocess Embedding Database
 
-Run ```db_split.py``` to preprocess embedding database for indexing.<br><br>
+Run both of following commands to preprocess embedding database for indexing.<br><br>
 For english<br>
 ```python db_split.py en```<br>
 For sinhala<br>
 ```python db_split.py si```
 
 ### Build Index Files
-Run ```indexing.py``` to build index files.<br>(You should use same filename.py for both previous step and this step )<br><br>
+Run both of following commands to build index files.<br>(You should use same filename.py for both previous step and this step )<br><br>
 For english<br>
 ```python indexing.py en```<br>
 For sinhala<br>
