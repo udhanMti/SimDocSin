@@ -31,17 +31,17 @@ Run ```build.sh``` or ```build.bat``` to create the following folders within Sim
 ```outputs_full_match``` - To contain documents outputted by the system <br>
 ```outputs_partial_match``` - To contain documents outputted by the system <br>
 ```embeddings```- To contain embedding json files
-```other folder name``` - To contain document json files [@udesh  build.bat & build.sh]
 
 ### Embed Documents
+You can find already embeded documents from <a href="">here[Add link]</a>
 
-
-### To update----<br>
-Run below command to embed json list of documents using ```embedding_creator.py``` inside ```embedder``` folder.<br><br>
+If you want embed your own documents, run below command to embed json list of documents using ```embedding_creator.py``` inside ```embedder``` folder.<br><br>
+<free>
 ```python embedding_creator.py path/to/input_file.json file_type output_file_name```
 
+Here ```file_type``` is ```si``` for sinhala, ```en``` for english and ```pa``` for parallel documents.<br>
 
-The format of the input json file should be in following format.<br>
+The format of the input_file.json should be in following format.<br>
 For english documents
 ```
 [

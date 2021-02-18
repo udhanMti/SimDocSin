@@ -17,7 +17,7 @@ parallel =[]
 file_path = ""
 i=0
 
-if file_type == 'sinhala':
+if file_type == 'si':
     for a in data:
         print(i)
         i += 1
@@ -33,7 +33,7 @@ if file_type == 'sinhala':
         file_path = "../embeddings/sinhala/" + output_file + ".json"
 
 
-elif file_type == 'english':
+elif file_type == 'en':
     for a in data:
         print(i)
         i += 1
