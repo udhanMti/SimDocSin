@@ -3,7 +3,7 @@
 /ann/
 temp.py
 /.idea
-/embed_data
+/Embeddings
 /db
 /splitter
 /index
@@ -13,8 +13,11 @@ temp.py
 /webapp/__pycache__
 /webapp_controller/__pycache__
 __pycache__
-/embed_data
+/Embeddings
 /db
 /index/
 /outputs/
-config.py
+/Embeddings
+/inputs
+/outputs_full_match
+/outputs_partial_match
