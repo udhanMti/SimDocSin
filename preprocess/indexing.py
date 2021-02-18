@@ -16,7 +16,7 @@ sent_to_doc_map = {}
 
 f = 1024
 t = AnnoyIndex(f, 'euclidean')
-t.on_disk_build("test_"+lang+".ann")
+t.on_disk_build("../index/test_"+lang+".ann")
 
 sent_count ={}
 sent_count[0] = 0
@@ -47,8 +47,8 @@ print("Create indexes for Total" + str(count) + "Traget Documents")
 t.build(25)
 # t.save('test.ann')
 
-with open("sent_to_doc_map_"+lang+".json", 'w', encoding="utf8") as outfile:
+with open("../index/sent_to_doc_map_"+lang+".json", 'w', encoding="utf8") as outfile:
     json.dump(sent_to_doc_map, outfile, ensure_ascii=False)
 
-with open("sent_count_map_"+lang+".json", 'w', encoding="utf8") as outfile:
+with open("../index/sent_count_map_"+lang+".json", 'w', encoding="utf8") as outfile:
     json.dump(sent_count, outfile, ensure_ascii=False)
