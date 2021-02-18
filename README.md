@@ -34,12 +34,14 @@ Run ```build.sh``` or ```build.bat```.  It will create the following folders wit
 
 ### Embed Documents
 You can find already embeded documents from <a href="">here[Add link]</a>
+You have to download and put those files to corresponding sub folder within the ```embeddings``` folder
 
-If you want embed your own documents, run below command to embed json list of documents using ```embedding_creator.py``` inside ```embedder``` folder.<br><br>
+##### Alternative option
+If you want you can embed documents by yourself and use (but this is not recommended), run below command to embed json list of documents using ```embedding_creator.py``` inside ```embedder``` folder.<br><br>
 <free>
 ```python embedding_creator.py path/to/input_file.json file_type output_file_name```
 
-Here ```file_type``` is ```si``` for sinhala, ```en``` for english and ```pa``` for parallel documents.<br>
+Here ```file_type``` is ```si``` for sinhala documents, ```en``` for english documents and ```pa``` for parallel document parirs.<br>
 
 The format of the input_file.json should be in following format.<br>
 For english documents
