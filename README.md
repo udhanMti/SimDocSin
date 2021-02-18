@@ -101,7 +101,7 @@ For sinhala<br>
 
 After this step, ```embeddings``` folder is no more needed.
 ### Run SimDocSin
-```flask run```
+Execute ```flask run``` within the webapp folder
 
 ### Contributors
 Udhan Isuranga (udhanisuranga.16@cse.mrt.ac.lk) <br>
