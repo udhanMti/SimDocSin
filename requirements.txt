@@ -4,3 +4,4 @@ json5==0.8.5
 laserembeddings==1.0.1
 sinling
 nltk
+annoy
