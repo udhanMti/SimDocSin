@@ -210,7 +210,7 @@ def main_partial(source, threshold_index, threshold_length, source_lang='en'):
     # elif (threshold_length == '10+'):
     #     min_length = 10
 
-    # file1 = open('../MassDoc/embed_data/embedding.json',
+    # file1 = open('../MassDoc/Embeddings/embedding.json',
     #            encoding='utf8')
     # data1 = json.load(file1)
     # target_docs = []

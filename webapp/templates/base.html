@@ -191,7 +191,10 @@
 
     getResultString = function(response){
 
-        s = '<h4>Results</h4><br>'
+    s = '<h4>Results</h4><br>'
+        if(response.resultsNotAvailable){
+            s+='<P class="result-target">No match</P>'
+        } else {
             results = response.results;
             for(i=0;i<results.length;i++){
                 result = results[i]
@@ -211,8 +214,8 @@
 
                 }
             
+            }
         }
-
         return s;
 
     }
@@ -320,7 +323,7 @@
         s = '<h4>Results</h4><br>'
         if(response.resultsNotAvailable){
             s+='<P class="result-target">No match</P>'
-        } 
+        }
         else{
             results = response.results;
             for(i=0;i<results.length;i++){

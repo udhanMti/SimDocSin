@@ -89,4 +89,9 @@ def main(sources, threshold_index, source_lang='en'):
             result['target'] = matching_target_documents
 
         results.append(result)
-    return results
+    resultsNotAvailable = False
+    if (len(results) == 0):
+        resultsNotAvailable = True
+
+    return results, resultsNotAvailable
+    #return results
