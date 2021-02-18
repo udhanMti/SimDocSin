@@ -38,10 +38,11 @@ Run ```build.sh``` or ```build.bat```.  It will create the following folders wit
 
 
 ### Embed Documents
+#### Main option
 You can find already embeded documents from <a href="">here[Add link]</a> <br>
 You have to download and put those files to corresponding sub folder within the ```embeddings``` folder
 
-##### Alternative option
+#### Alternative option
 If you want you can embed documents by yourself and use (but this is not recommended) <br>
 Run below command to embed json list of documents using ```embedding_creator.py``` inside ```embedder``` folder.<br><br>
 <free>
