@@ -36,7 +36,7 @@ Run ```build.sh``` or ```build.bat``` to create the following folders within Sim
 ### Embed Documents
 
 
-To update----<br>
+### To update----<br>
 Run below command to embed json list of documents using ```embedding_creator.py``` inside ```embedder``` folder.<br><br>
 ```python embedding_creator.py path/to/input_file.json file_type output_file_name```
 
@@ -99,7 +99,7 @@ For english<br>
 For sinhala<br>
 ```python indexing.py si```
 
-After this step, ```Embeddings``` folder is no more needed.
+After this step, ```embeddings``` folder is no more needed.
 ### Run SimDocSin
 ```flask run```
 
