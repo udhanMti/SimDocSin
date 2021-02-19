@@ -42,8 +42,10 @@ Run ```build.sh``` or ```build.bat```.  It will create the following folders wit
 You can find already embeded documents from <a href="https://drive.google.com/drive/folders/13DKw_P_cdoeMOTt_b6RCn5jvm8ek3bxO?usp=sharing">here</a> <br>
 You have to download and put those files to corresponding sub folder within the ```embeddings``` folder
 
+<br>OR<br>
+
 #### Alternative option
-If you want you can embed documents by yourself and use (but this is not recommended) <br>
+If you want you can embed documents by yourself and use (but above main option is more prefered) <br>
 Run below command to embed json list of documents using ```embedding_creator.py``` inside ```embedder``` folder.<br><br>
 <free>
 ```python embedding_creator.py path/to/input_file.json file_type output_file_name```
