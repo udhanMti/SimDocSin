@@ -39,7 +39,7 @@ Run ```build.sh``` or ```build.bat```.  It will create the following folders wit
 
 ### 3. Embed Documents
 #### Main option
-You can find already embeded documents from <a href="">here[Add link]</a> <br>
+You can find already embeded documents from <a href="https://drive.google.com/drive/folders/13DKw_P_cdoeMOTt_b6RCn5jvm8ek3bxO?usp=sharing">here</a> <br>
 You have to download and put those files to corresponding sub folder within the ```embeddings``` folder
 
 #### Alternative option
