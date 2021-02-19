@@ -1,7 +1,8 @@
 import json
+import sys
+sys.path.append('../../SimDocSin/')
 from embedder.laser_control import get_embeddig_list
 from weight_schema import *
-import sys
 import os
 import errno
 
