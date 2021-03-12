@@ -114,3 +114,7 @@ Execute ```flask run``` within the webapp folder
 Udhan Isuranga (udhanisuranga.16@cse.mrt.ac.lk) <br>
 Janaka Sandaruwan (janakasadaruwan.16@cse.mrt.ac.lk) <br>
 Udesh Athukorala (udeshathukorala.16@cse.mrt.ac.lk) <br>
+
+### Publications
+
+https://www.researchgate.net/publication/348328250_Improved_Cross-Lingual_Document_Similarity_Measurement
