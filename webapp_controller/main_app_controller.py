@@ -7,7 +7,7 @@ from extract_digits import extract_digits, get_digit_similarity
 
 
 def main(sources, threshold_index, source_lang='en'):
-    threshold = 0.965 + ((0.99 - 0.965) / 4) * int(threshold_index)
+    threshold = 0.965 + ((0.99 - 0.965) / 4) * (4 - int(threshold_index))
     target_lang = 'si'
     if (source_lang == 'si'):
         target_lang = 'en'
