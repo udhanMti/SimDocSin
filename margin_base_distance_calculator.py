@@ -20,7 +20,7 @@ def margin_base_score(source_document, source_weights, target_lang):
         map_file = open('../index/sent_to_doc_map_si.json', encoding='utf8')
         maps = json.load(map_file)
 
-        cmap_file = open('../index/sent_count_map_en.json', encoding='utf8')
+        cmap_file = open('../index/sent_count_map_si.json', encoding='utf8')
         cmaps = json.load(cmap_file)
     else:
         f = 1024
